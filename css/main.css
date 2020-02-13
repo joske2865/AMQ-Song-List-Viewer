@@ -1,0 +1,328 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-image: url("../img/amq-bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
+#slHeader {
+    background-color: #424242;
+    color: #d9d9d9;
+    height: 150px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px 2px rgb(0, 0, 0);
+    width: 100%;
+    z-index: 10;
+}
+#slHeaderLeft {
+    width: 250px;
+    border-right: 1px solid #6d6d6d;
+    height: 100%;
+    text-align: center;
+    float: left;
+}
+#slHeaderRight {
+    width: calc(100% - 250px);
+    float: left; 
+}
+#slHeaderLeft h1 {
+    font-weight: normal;
+    padding: 15px 15px 0px 15px;
+    margin-top: 0;
+}
+#slHeaderSearch {
+    width: 60%;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-right: 1px solid #6d6d6d;
+    height: 150px;
+}
+.slSearchInput {
+    width: 100%;
+    color: black;
+    margin: 0;
+    height: 35px;
+    border-radius: 4px;
+    border: 0;
+    text-overflow: ellipsis;
+    padding: 5px;
+}
+.slSearchContainer {
+    width: 31%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 5px;
+    float: left;
+}
+#slHeaderFilter {
+    float: left;
+    width: 240px;
+    text-align: center;
+    margin-top: 5px;
+}
+#slHeaderTypeFilters {
+    text-align: center;
+    margin-top: 5px;
+}
+.unchecked label {
+    visibility: hidden;
+}
+.slTypeFilter {
+    width: 33.33%;
+    text-align: center;
+    float: left;
+}
+.filterCheckbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-image: linear-gradient(to bottom,#f5f5f5 0,#f9f9f9 100%);
+    margin: auto;
+}
+.filterCheckbox label {
+    color: #006ab7;
+    font-size: 28px;
+    position: relative;
+    left: 0;
+    top: -57%;
+    user-select: none;
+}
+#slAnimeTitleSelectContainer {
+    width: 100px;
+    float: left;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 2%;
+}
+#slAnimeTitleSelect {
+    color: black;
+    width: 80px;
+    margin-top: 5px;
+}
+#slTableContainer {
+    color: #d9d9d9;
+    width: calc(49% - 120px);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #424242;
+    box-shadow: 0 0 10px 2px rgb(0, 0, 0);
+    display: none;
+    height: 500px;
+    float: left;
+}
+#slTableHeader {
+    border-bottom: 1px solid #6d6d6d;
+    padding: 15px;
+}
+#slTableBody {
+    height: 425px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+#slTableHeader h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.42857143;
+    text-align: center;
+    font-weight: normal;
+}
+#slTable {
+    color: #d9d9d9;
+    background-color: #424242;
+    box-shadow: 0 0 10px 2px rgb(0, 0, 0);
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 10px;
+    display: none;
+}
+#slTable td {
+    padding: 0;
+    font-size: 14px;
+    line-height: 20px;
+}
+tr.header {
+    height: 30px;
+}
+tr.header > td {
+    font-weight: bold;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+.songData {
+    height: 50px;
+}
+.songData > td {
+    vertical-align: middle;
+    border: 1px solid black;
+    text-align: center;
+}
+.songNumber {
+    min-width: 60px;
+}
+.songType {
+    min-width: 80px;
+}
+.guessesCounter {
+    min-width: 75px;
+}
+.samplePoint {
+    min-width: 70px;
+}
+.clickable {
+    cursor: pointer;
+}
+#slScoreboard {
+    float: left;
+    width: 215px;
+    border-radius: 5px;
+    overflow-wrap: break-word;
+    background-color: #424242;
+    color: #d9d9d9;
+    box-shadow: 0 0 10px 2px rgb(0, 0, 0);
+    margin: 0px 1%;
+    display: none;
+}
+#slScoreboard h3 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 10px;
+}
+#slScoreboardContainer {
+    margin-left: 10px;
+    max-height: 455px;
+    overflow-y: auto;
+    padding-bottom: 5px;
+}
+.slScoreboardEntry {
+    font-size: 14px;
+    height: 30px;
+    vertical-align: middle;
+    display: block;
+}
+.disabled {
+    opacity: 0.4;
+}
+.rightAnswer {
+    text-shadow: 0 0 5px #fff, 0 0 10px #B6FF00, 0 0 15px #B6FF00;
+}
+.slScoreboardPosition {
+    font-size: 22px;
+    width: 25px;
+    display: inline-block;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.slScoreboardEntry p {
+    display: inline;
+    margin: 0;
+    vertical-align: text-top;
+}
+.slScoreboardScore {
+    margin-right: 5px;
+}
+.slScoreboardCorrectGuesses {
+    opacity: 0.3;
+    margin-right: 5px;
+}
+.hide {
+    display: none !important;
+}
+#slInfo {
+    background-color: #424242;
+    width: calc(49% - 120px);
+    float: left;
+    color: #d9d9d9;
+    box-shadow: 0 0 10px 2px rgb(0, 0, 0);
+    min-width: 350px;
+    height: 500px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: none;
+    float: left;
+    margin-left: 10px;
+}
+#slInfoBody {
+    height: 425px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+#slInfo ul {
+    padding: 0;
+    list-style: none;
+}
+#slInfoHeader {
+    border-bottom: 1px solid #6d6d6d;
+    padding: 15px;
+}
+#slInfoHeader h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.42857143;
+    text-align: center;
+    font-weight: normal;
+}
+.slInfoRow {
+    width: 98%;
+    height: auto;
+    text-align: center;
+    clear: both;
+}
+.slInfoRow > div {
+    margin: 1%;
+    text-align: center;
+    float: left;
+}
+.slInfoRow > div h5 {
+    font-weight: bold;
+    font-size: 16px;
+}
+#slInfoSongName {
+    width: 38%;
+    overflow-wrap: break-word;
+}
+#slInfoArtist {
+    width: 38%;
+    overflow-wrap: break-word;
+}
+#slInfoType{
+    width: 18%;
+    overflow-wrap: break-word; 
+}
+#slInfoAnimeEnglish {
+    width: 38%;
+    overflow-wrap: break-word;
+}
+#slInfoAnimeRomaji {
+    width: 38%;
+    overflow-wrap: break-word;
+}
+#slInfoSample {
+    width: 18%;
+    overflow-wrap: break-word; 
+}
+#slInfoUrls {
+    width: 100%;
+}
+#slInfoGuessed {
+    width: 48%;
+    float: left;
+}
+#slInfoGuessedLeft {
+    width: 48%;
+    margin: 1%;
+    float: left;
+}
+#slInfoGuessedRight {
+    width: 48%;
+    margin: 1%;
+    float: left;
+}
+#slInfoFromList {
+    width: 48%;
+    float: left;
+}

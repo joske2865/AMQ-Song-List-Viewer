@@ -1,10 +1,147 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>AMQ Song List Viewer</title>
+        <meta charset="UTF-8" />
+        <meta name="author" content="TheJoseph98" />
+        <title>Song List Viewer</title>
+        <script src="lib/jquery-3.4.1.min.js"></script>
+        <script src="js/setup.js"></script>
+        <script src="js/import.js"></script>
+        <script src="js/display.js"></script>
+        <script src="js/search.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     </head>
-    <body>
-        <h1>AMQ Song List Viewer</h1>
+    <body onload="setup()">
+        <div id="slHeader">
+            <div id="slHeaderLeft">
+                <h1>AMQ Song List Viewer</h1>
+                <button id="slImportButton" class="btn btn-primary">Import</button>
+                <input id="slImport" type="file" name="slDataFile" accept="text/json" style="display: none;" />
+            </div>
+            <div id="slHeaderRight">
+                <div id="slHeaderSearch">
+                    <div class="slSearchContainer">
+                        <span>Song Name:</span>
+                        <input class="slSearchInput" id="slSearchSongName" placeholder="Search song name" type="text" />
+                    </div>
+                    <div class="slSearchContainer">
+                        <span>Artist:</span>
+                        <input class="slSearchInput" id="slSearchArtist" placeholder="Search artist" type="text" />
+                    </div>
+                    <div class="slSearchContainer">
+                        <span>Anime:</span>
+                        <input class="slSearchInput" id="slSearchAnime" placeholder="Search anime" type="text" />
+                    </div>
+                    <div id="slHeaderFilter">
+                        <span>Song Type</span>
+                        <div id="slHeaderTypeFilters">
+                            <div class="slTypeFilter">
+                                <div id="slTypeOpenings" class="filterCheckbox">
+                                    <label>✔</label>
+                                </div>
+                                <span>Openings</span>
+                            </div>
+                            <div class="slTypeFilter">
+                                <div id="slTypeEndings" class="filterCheckbox">
+                                    <label>✔</label>
+                                </div>
+                                <span>Endings</span>
+                            </div>
+                            <div class="slTypeFilter">
+                                <div id="slTypeInserts" class="filterCheckbox">
+                                    <label>✔</label>
+                                </div>
+                                <span>Insert Songs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="slAnimeTitleSelectContainer">
+                        <span>Anime Titles</span>
+                        <select id="slAnimeTitleSelect">
+                            <option value="english">English</option>
+                            <option value="romaji" selected>Romaji</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="slMain">
+            <div id="slScoreboard">
+                <div>
+                    <h3>Standings</h3>
+                </div>
+                <div id="slScoreboardContainer">
+                    
+                </div>
+            </div>
+            <div id="slTableContainer">
+                <div id="slTableHeader">
+                    <h2>Song List</h2>
+                </div>
+                <div id="slTableBody">
+                    <table id="slTable">
+                        <tr class="header">
+                            <td class="songNumber">Number</td>
+                            <td class="songName">Song Name</td>
+                            <td class="songArtist">Artist</td>
+                            <td class="animeNameRomaji" style="display: none;">Anime</td>
+                            <td class="animeNameEnglish">Anime</td>
+                            <td class="songType">Type</td>
+                            <td class="guessesCounter">Guesses</td>
+                            <td class="samplePoint">Sample</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="slInfo">
+                <div id="slInfoHeader">
+                    <h2>Song Info</h2>
+                </div>
+                <div id="slInfoBody">
+                    <div class="slInfoRow">
+                        <div id="slInfoSongName">
+                            <h5>Song Name</h5>
+                        </div>
+                        <div id="slInfoArtist">
+                            <h5>Artist</h5>
+                        </div>
+                        <div id="slInfoType">
+                            <h5>Type</h5>
+                        </div>
+                    </div>
+                    <div class="slInfoRow">
+                        <div id="slInfoAnimeEnglish">
+                            <h5>Anime English</h5>
+                        </div>
+                        <div id="slInfoAnimeRomaji">
+                            <h5>Anime Romaji</h5>
+                        </div>
+                        <div id="slInfoSample">
+                            <h5>Sample Point</h5>
+                        </div>
+                    </div>
+                    <div class="slInfoRow">
+                        <div id="slInfoUrls">
+                            <h5>URLs</h5>
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slInfoRow">
+                        <div id="slInfoGuessed">
+                            <h5>Guessed</h5>
+                        </div>
+                        <div id="slInfoFromList">
+                            <h5>From Lists</h5>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
