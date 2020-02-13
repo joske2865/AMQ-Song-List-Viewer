@@ -1,4 +1,6 @@
 function loadData() {
+    playerNames.clear();
+    $("#slPlayerList > option").remove();
     $("#slTableContainer").show();
     $("#slTable").show();
     $("tr.songData").remove();
@@ -54,7 +56,15 @@ function loadData() {
             $(".animeNameEnglish").hide();
             $(".animeNameRomaji").show();
         }
+        song.players.forEach((player) => {
+            playerNames.add(player.name);
+        });
     }
+    playerNames.forEach((p1, p2) => {
+        $("#slPlayerList").append($("<option></option>")
+            .attr("value", p1)
+        );
+    });
 }
 
 function formatSamplePoint(start, length) {
@@ -65,6 +75,21 @@ function formatSamplePoint(start, length) {
     let videoLength = Math.round(length);
     let totalLength = Math.floor(videoLength / 60) + ":" + (videoLength % 60 < 10 ? "0" + (videoLength % 60) : videoLength % 60);
     return startPoint + "/" + totalLength;
+}
+
+function updateTableGuesses(playerName) {
+    for (let i = 0; i < importData.length; i++) {
+        let findPlayer = importData[i].players.find((player) => {
+            return player.name === playerName;
+        });
+        if (findPlayer !== undefined) {
+            $($("tr.songData").get(i)).addClass(findPlayer.correct === true ? "rightAnswerTable" : "wrongAnswerTable");
+        }
+        else {
+            $($("tr.songData").get(i)).removeClass("rightAnswerTable");
+            $($("tr.songData").get(i)).removeClass("wrongAnswerTable");
+        }
+    }
 }
 
 function updateScoreboard(song) {
@@ -80,7 +105,7 @@ function updateScoreboard(song) {
             .append($("<p></p>")
                 .append($("<b></b>")
                     .addClass("slScoreboardScore")
-                    .addClass(player.correct === true ? "rightAnswer" : "")
+                    .addClass(player.correct === true ? "rightAnswerScoreboard" : "")
                     .text(player.score)
                 )
                 .append($("<span></span>")
@@ -91,9 +116,21 @@ function updateScoreboard(song) {
                 .append($("<span></span>")
                     .addClass("slScoreboardName")
                     .text(player.name)
+                    .addClass($("#slPlayerName").val() === player.name ? "self" : "")
                 )
             )
         )
+    });
+}
+
+function updateScoreboardHighlight(name) {
+    $(".slScoreboardEntry").each((index, elem) => {
+        if ($(elem).find(".slScoreboardName").text() === name) {
+            $(elem).find(".slScoreboardName").addClass("self");
+        }
+        else {
+            $(elem).find(".slScoreboardName").removeClass("self");
+        }
     });
 }
 

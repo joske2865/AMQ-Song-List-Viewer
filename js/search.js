@@ -86,7 +86,7 @@ function testRegex(value, query) {
 }
 
 function updateRow(row) {
-    if (row.find(".rowHidden").length === 0) {
+    if (row.find(".rowHidden").length === 0 || row.hasClass("rowHidden")) {
         row.show();
     }
     else {

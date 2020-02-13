@@ -1,4 +1,5 @@
 let importData;
+let playerNames = new Set();
 
 function setup() {
     $("#slImportButton").click(function () {
@@ -31,6 +32,10 @@ function setup() {
             $(".animeNameEnglish").hide();
             $(".animeNameRomaji").show();
         }
+    });
+    $("#slPlayerName").on("input", function () {
+        updateScoreboardHighlight($(this).val());
+        updateTableGuesses($(this).val());
     });
     $("#slImport").on("change", function () {
         let file = $(this).get(0).files[0];

@@ -37,6 +37,7 @@ body {
     padding-left: 10px;
     border-right: 1px solid #6d6d6d;
     height: 150px;
+    float: left;
 }
 .slSearchInput {
     width: 100%;
@@ -100,6 +101,15 @@ body {
     width: 80px;
     margin-top: 5px;
 }
+#slHeaderPlayer {
+    width: 40%;
+    float: right;
+    height: 150px;
+    padding-top: 10px;
+}
+#slSearchPlayerNameContainer {
+    margin-left: 34%;
+}
 #slTableContainer {
     color: #d9d9d9;
     width: calc(49% - 120px);
@@ -116,7 +126,7 @@ body {
     padding: 15px;
 }
 #slTableBody {
-    height: 425px;
+    height: 427px;
     overflow-y: auto;
     overflow-x: auto;
 }
@@ -133,8 +143,9 @@ body {
     box-shadow: 0 0 10px 2px rgb(0, 0, 0);
     border-spacing: 0;
     border-collapse: collapse;
-    margin: 10px;
+    margin: 10px 1%;
     display: none;
+    width: 98%;
 }
 #slTable td {
     padding: 0;
@@ -173,6 +184,12 @@ tr.header > td {
 .clickable {
     cursor: pointer;
 }
+.rightAnswerTable {
+    background-color: rgba(0, 200, 0, 0.07);
+}
+.wrongAnswerTable {
+    background-color: rgba(255, 0, 0, 0.07);
+}
 #slScoreboard {
     float: left;
     width: 215px;
@@ -205,8 +222,12 @@ tr.header > td {
 .disabled {
     opacity: 0.4;
 }
-.rightAnswer {
+.rightAnswerScoreboard {
     text-shadow: 0 0 5px #fff, 0 0 10px #B6FF00, 0 0 15px #B6FF00;
+}
+.self {
+    color: #80c7ff;
+    text-shadow: 0 0 10px #228DFF;
 }
 .slScoreboardPosition {
     font-size: 22px;
@@ -247,7 +268,7 @@ tr.header > td {
     margin-left: 10px;
 }
 #slInfoBody {
-    height: 425px;
+    height: 427px;
     overflow-y: auto;
     overflow-x: auto;
 }
