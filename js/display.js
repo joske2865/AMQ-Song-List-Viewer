@@ -85,7 +85,13 @@ function updateTableGuesses(playerName) {
             return player.name === playerName;
         });
         if (findPlayer !== undefined) {
-            $($("tr.songData").get(i)).addClass(findPlayer.correct === true ? "rightAnswerTable" : "wrongAnswerTable");
+            if (findPlayer.active === true) {
+                $($("tr.songData").get(i)).addClass(findPlayer.correct === true ? "rightAnswerTable" : "wrongAnswerTable");
+            }
+            else {
+                $($("tr.songData").get(i)).removeClass("rightAnswerTable");
+                $($("tr.songData").get(i)).removeClass("wrongAnswerTable");
+            }
         }
         else {
             $($("tr.songData").get(i)).removeClass("rightAnswerTable");
