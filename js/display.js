@@ -65,6 +65,8 @@ function loadData() {
             .attr("value", p1)
         );
     });
+    updateTableGuesses($("#slPlayerName").val());
+    updateScoreboardHighlight($("#slPlayerName").val());
 }
 
 function formatSamplePoint(start, length) {
