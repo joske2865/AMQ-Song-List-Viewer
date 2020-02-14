@@ -22,6 +22,7 @@ function setup() {
             $(this).addClass("unchecked");
         }
         updateTypes();
+        updateTableGuesses($("#slPlayerName").val());
     });
     $("#slAnimeTitleSelect").on("change", function () {
         if ($(this).val() === "english") {

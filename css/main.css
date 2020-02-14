@@ -32,7 +32,7 @@ body {
     margin-top: 0;
 }
 #slHeaderSearch {
-    width: 60%;
+    width: calc(100% - 200px);
     padding-top: 10px;
     padding-left: 10px;
     border-right: 1px solid #6d6d6d;
@@ -102,17 +102,30 @@ body {
     margin-top: 5px;
 }
 #slHeaderPlayer {
-    width: 40%;
+    width: 200px;
     float: right;
     height: 150px;
     padding-top: 10px;
 }
 #slSearchPlayerNameContainer {
-    margin-left: 34%;
+    width: 90%;
+    margin-left: 5%;
+}
+#slPlayerAnswerContainer {
+    width: 100px;
+    float: left;
+    text-align: center;
+    margin-top: 15px;
+}
+#slPlayerCorrectContainer {
+    float: right;
+    text-align: center;
+    margin-top: 15px;
+    width: 100px;
 }
 #slTableContainer {
     color: #d9d9d9;
-    width: calc(49% - 120px);
+    width: calc(59% - 120px);
     overflow-x: hidden;
     overflow-y: hidden;
     background-color: #424242;
@@ -180,6 +193,9 @@ tr.header > td {
 }
 .samplePoint {
     min-width: 70px;
+}
+.playerAnswer {
+    display: none;
 }
 .clickable {
     cursor: pointer;
@@ -255,16 +271,16 @@ tr.header > td {
 }
 #slInfo {
     background-color: #424242;
-    width: calc(49% - 120px);
+    width: calc(39% - 120px);
     float: left;
     color: #d9d9d9;
     box-shadow: 0 0 10px 2px rgb(0, 0, 0);
-    min-width: 350px;
+    min-width: 300px;
     height: 500px;
     overflow-y: hidden;
     overflow-x: hidden;
     display: none;
-    float: left;
+    /* float: left; */
     margin-left: 10px;
 }
 #slInfoBody {

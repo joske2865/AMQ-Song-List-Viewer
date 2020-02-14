@@ -3,6 +3,10 @@ function loadData() {
     $("#slPlayerList > option").remove();
     $("#slTableContainer").show();
     $("#slTable").show();
+    $("#slScoreboard").show();
+    $("#slInfo").show();
+    clearInfo();
+    clearScoreboard();
     $("tr.songData").remove();
     for (let song of importData) {
         let guesses = song.players.filter((tmpPlayer) => tmpPlayer.correct === true);
@@ -32,6 +36,10 @@ function loadData() {
             .append($("<td></td>")
                 .text(song.type)
                 .addClass("songType")
+            )
+            .append($("<td></td>")
+                .text("...")
+                .addClass("playerAnswer")
             )
             .append($("<td></td>")
                 .text(guesses.length + "/" + song.activePlayers + " (" + parseFloat((guesses.length/song.activePlayers*100).toFixed(2)) + "%)")
@@ -85,7 +93,14 @@ function updateTableGuesses(playerName) {
             return player.name === playerName;
         });
         if (findPlayer !== undefined) {
-            if (findPlayer.active === true) {
+            if (!$("#slPlayerAnswers").hasClass("unchecked")) {
+                $($(".songData .playerAnswer").get(i)).text(findPlayer.answer);
+                $(".playerAnswer").show();
+            }
+            else {
+                $(".playerAnswer").hide();
+            }
+            if (findPlayer.active === true && !$("#slPlayerCorrect").hasClass("unchecked")) {
                 $($("tr.songData").get(i)).addClass(findPlayer.correct === true ? "rightAnswerTable" : "wrongAnswerTable");
             }
             else {
@@ -96,7 +111,9 @@ function updateTableGuesses(playerName) {
         else {
             $($("tr.songData").get(i)).removeClass("rightAnswerTable");
             $($("tr.songData").get(i)).removeClass("wrongAnswerTable");
+            $(".playerAnswer").hide();
         }
+
     }
 }
 
@@ -284,4 +301,8 @@ function updateInfo(song) {
 
 function clearInfo() {
     $("#slInfoBody").children().remove();
+}
+
+function clearScoreboard() {
+    $(".slScoreboardEntry").remove();
 }
