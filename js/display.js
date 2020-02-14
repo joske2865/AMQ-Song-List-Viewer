@@ -111,7 +111,7 @@ function updateTableGuesses(playerName) {
         else {
             $($("tr.songData").get(i)).removeClass("rightAnswerTable");
             $($("tr.songData").get(i)).removeClass("wrongAnswerTable");
-            $(".playerAnswer").hide();
+            $($(".songData .playerAnswer").get(i)).text("...");
         }
 
     }
