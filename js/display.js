@@ -73,6 +73,7 @@ function loadData() {
             .attr("value", p1)
         );
     });
+    $(".playerAnswer").hide();
     updateTableGuesses($("#slPlayerName").val());
     updateScoreboardHighlight($("#slPlayerName").val());
 }
@@ -88,11 +89,13 @@ function formatSamplePoint(start, length) {
 }
 
 function updateTableGuesses(playerName) {
+    let playerExists = false;
     for (let i = 0; i < importData.length; i++) {
         let findPlayer = importData[i].players.find((player) => {
             return player.name === playerName;
         });
         if (findPlayer !== undefined) {
+            playerExists = true;
             if (!$("#slPlayerAnswers").hasClass("unchecked")) {
                 $($(".songData .playerAnswer").get(i)).text(findPlayer.answer);
                 $(".playerAnswer").show();
@@ -112,6 +115,12 @@ function updateTableGuesses(playerName) {
             $($("tr.songData").get(i)).removeClass("rightAnswerTable");
             $($("tr.songData").get(i)).removeClass("wrongAnswerTable");
             $($(".songData .playerAnswer").get(i)).text("...");
+            if (!playerExists) {
+                $(".playerAnswer").hide();
+            }
+            if ($("#slPlayerAnswers").hasClass("unchecked")) {
+                $(".playerAnswer").hide();
+            }
         }
 
     }
