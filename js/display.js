@@ -126,6 +126,8 @@ function updateScoreboard(song) {
             .append($("<span></span>")
                 .addClass("slScoreboardPosition")
                 .text(player.position)
+                .width(player.position.toString().length === 3 ? "42px" : "")
+                .css("text-align", player.position.toString().length === 3 ? "left" : "center")
             )
             .append($("<p></p>")
                 .append($("<b></b>")
