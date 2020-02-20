@@ -47,24 +47,21 @@ function setup() {
             let reader = new FileReader();
             reader.onload = function () {
                 try {
-                    let validateResult = validateJSON(JSON.parse(reader.result));
-                    if (validateResult !== true) {
-                        alert("Not a valid Song List JSON format: " + validateResult);
-                    }
-                    else {
-                        importData = JSON.parse(reader.result);
-                        $("#slInfo").hide();
-                        $("#slScoreboard").hide();
-                        loadData();
-                        searchAnime($("#slSearchAnime").val());
-                        searchArtist($("#slSearchArtist").val());
-                        searchSongName($("#slSearchSongName").val());
-                        updateTypes();
-                    }
+                    importData = JSON.parse(reader.result);
+                    $("#slInfo").hide();
+                    $("#slScoreboard").hide();
+                    loadData();
+                    searchAnime($("#slSearchAnime").val());
+                    searchArtist($("#slSearchArtist").val());
+                    searchSongName($("#slSearchSongName").val());
+                    updateTypes();
                 }
                 catch (e) {
                     if (e instanceof SyntaxError) {
-                        alert("Invalid JSON format");
+                        alert(e.name + ": " + e.message);
+                    }
+                    if (e instanceof ReferenceError) {
+                        alert(e.name + ": " + e.message);
                     }
                 }
                 
