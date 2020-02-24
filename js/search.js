@@ -122,9 +122,17 @@ function searchAnime(query) {
     $(".songData .animeNameRomaji").each((index, elem) => {
         if (testRegex($(elem).text(), query)) {
             $(elem).removeClass("rowHidden");
+            $(elem).parent().find(".animeNameEnglish").removeClass("rowHidden");
         }
         else {
-            $(elem).addClass("rowHidden");
+            if (testRegex($(elem).parent().find(".animeNameEnglish").text(), query)) {
+                $(elem).removeClass("rowHidden");
+                $(elem).parent().find(".animeNameEnglish").removeClass("rowHidden");
+            }
+            else {
+                $(elem).parent().find(".animeNameEnglish").addClass("rowHidden");
+                $(elem).addClass("rowHidden");
+            }
         }
         updateRow($(elem).parent());
     });
