@@ -49,12 +49,25 @@ function loadData() {
                 .text(formatSamplePoint(song.startSample, song.videoLength))
                 .addClass("samplePoint")
             )
-            .click(() => {
-                $("#slScoreboard").show();
-                $("#slInfo").show();
-                updateScoreboard(song);
-                updateInfo(song);
+            .click(function () {
+                if (!$(this).hasClass("selected")) {
+                    $(".selected").removeClass("selected");
+                    updateScoreboard(song);
+                    updateInfo(song);
+                    $(this).addClass("selected");
+                }
+                else {
+                    $(".selected").removeClass("selected");
+                    clearScoreboard();
+                    clearInfo();
+                }
             })
+            .hover(function () {
+                $(this).addClass("hover");
+            }, function () {
+                $(this).removeClass("hover")
+            })
+
         );
         if ($("#slAnimeTitleSelect").val() === "english") {
             $(".animeNameEnglish").show();
