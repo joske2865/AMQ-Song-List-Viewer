@@ -216,10 +216,10 @@ function updateInfo(song) {
         .html("<h5><b>Sample Point</b></h5><p>" + formatSamplePoint(song.startSample, song.videoLength) + "</p>");
     let infoGuessed = $("<div></div>")
         .attr("id", "slInfoGuessed")
-        .html("<h5><b>Guessed<br>(" + guesses.length + "/" + song.activePlayers + ", " + parseFloat((guesses.length/song.activePlayers*100).toFixed(2)) + "%)</b></h5>");
+        .html("<h5><b>Guessed<br>" + guesses.length + "/" + song.activePlayers + " (" + parseFloat((guesses.length/song.activePlayers*100).toFixed(2)) + "%)</b></h5>");
     let infoFromList = $("<div></div>")
         .attr("id", "slInfoFromList")
-        .html("<h5><b>From Lists<br>(" + song.fromList.length + "/" + song.totalPlayers + ", " + parseFloat((song.fromList.length/song.totalPlayers*100).toFixed(2)) + "%)</b></h5>");
+        .html("<h5><b>From Lists<br>" + song.fromList.length + "/" + song.totalPlayers + " (" + parseFloat((song.fromList.length/song.totalPlayers*100).toFixed(2)) + "%)</b></h5>");
     let infoUrls = $("<div></div>")
         .attr("id", "slInfoUrls")
         .html("<h5><b>URLs</b></h5>");
