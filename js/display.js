@@ -306,10 +306,11 @@ function updateInfo(song) {
     for (let host in song.urls) {
         for (let resolution in song.urls[host]) {
             let url = song.urls[host][resolution];
+            let resolvedUrl = resolveNewCatboxUrl(url);
             let innerHTML = "";
             innerHTML += (host === "catbox" ? "Catbox " : (host === "animethemes" ? "AnimeThemes " : "OpeningsMoe "));
             innerHTML += (resolution === "0") ? "MP3: " : (resolution === "480") ? "480p: " : "720p: ";
-            innerHTML += "<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>";
+            innerHTML += "<a href=\"" + resolvedUrl + "\" target=\"_blank\">" + resolvedUrl + "</a>";
             infoListContainer.append($("<li></li>")
                 .html(innerHTML)
             );
@@ -321,6 +322,21 @@ function updateInfo(song) {
     $("#slInfoBody").append(infoRow2);
     $("#slInfoBody").append(infoRow3);
     $("#slInfoBody").append(infoRow4);
+}
+
+const OLD_CATBOX_URL = "https://files.catbox.moe/"
+const NEW_CATBOX_URL = "https://abdist1.catbox.video/"
+
+function resolveNewCatboxUrl(url) {
+    // Old-style Catbox url; no change
+    if (url.startsWith(OLD_CATBOX_URL)) {
+        return url;
+    } else if (url.match(/^\w+\.\w+$/)) { // be a bit lenient on this regex
+        return NEW_CATBOX_URL + url;
+    } else {
+        // Default to returning url, for other hosts, etc. May result in nonsense
+        return url;
+    }
 }
 
 function clearInfo() {
